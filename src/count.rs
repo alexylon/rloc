@@ -46,7 +46,10 @@ pub fn count_rust_lines(root: &Path) -> Result<()> {
             let entry = entry?;
             let path = entry.path();
             if entry.file_type()?.is_dir() {
-                pending_dirs.push(path);
+                let name = entry.file_name();
+                if name != "target" && name != ".git" {
+                    pending_dirs.push(path);
+                }
                 continue;
             }
             if path.extension() != Some(OsStr::new("rs")) {

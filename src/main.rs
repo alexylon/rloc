@@ -11,9 +11,8 @@ const RED: &str = "\x1b[31m";
 fn main() -> ExitCode {
     let arg = std::env::args().nth(1);
     let root = std::path::PathBuf::from(arg.as_deref().unwrap_or("."));
-    let src = root.join("src");
 
-    match count::count_rust_lines(&src) {
+    match count::count_rust_lines(&root) {
         Ok(()) => ExitCode::SUCCESS,
         Err(error) => {
             eprintln!("{RED}error{RESET}: {error}");

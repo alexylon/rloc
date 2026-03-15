@@ -1,6 +1,6 @@
 # rcount
 
-Count Rust lines of code in a project's `src/` directory.
+Count Rust lines of code in a project. Recursively finds all `.rs` files, skipping `target/` and `.git/`.
 
 Reports two totals:
 - **Pure Rust code** — excludes tests, lint attributes, and comments
@@ -9,7 +9,7 @@ Reports two totals:
 ## Usage
 
 ```bash
-# Count lines in ./src
+# Count lines in current directory
 rcount
 
 # Count lines in another project
